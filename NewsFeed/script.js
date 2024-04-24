@@ -1,6 +1,7 @@
-import { fetchAuthUserData, checkTokenExpiration } from "./FetchAuthUser.js";
-import { showLoader, hideLoader } from "./Loader.js";
+// import { showLoader, hideLoader } from "./Loader.js";
 import Search from "./SearchPost.js";
+import AuthUserDataFetcher from "./FetchAuthUser.js";
+import Loader from "./Loader.js";
 
 // Console All LocalStorage Data
 const token = localStorage.getItem("token");
@@ -34,8 +35,14 @@ userImage.src = image;
 // Instantiate the Search class
 const search = new Search();
 
-checkTokenExpiration(token);
-fetchAuthUserData(token);
+// Create an instance of AuthUserDataFetcher
+const userDataFetcher = new AuthUserDataFetcher(token);
+
+// Fetch user data
+userDataFetcher.fetchUserData();
+
+// Start checking token expiration periodically
+userDataFetcher.startCheckingTokenExpiration();
 
 //---------------- For Comment Button ----------------
 // Function to toggle visibility of Comment input field
@@ -252,6 +259,8 @@ document.addEventListener("click", (event) => {
 // --------- Delete Comment ----------
 
 // ------ For Loader ------
+// Create an instance of Loader
+const loader = new Loader();
 
 // ------ For Loader ------
 
@@ -323,10 +332,10 @@ async function fetchPosts() {
       }
     }
 
-    hideLoader();
+    loader.hide();
   } catch (error) {
     console.error("Error fetching posts:", error.message);
-    hideLoader();
+    loader.hide();
   }
 }
 
@@ -530,7 +539,7 @@ let loadingMorePosts = false;
 // Function to Get More Posts
 async function fetchMorePosts() {
   try {
-    showLoader();
+    loader.show();
     const response = await fetch("https://dummyjson.com/posts");
 
     if (!response.ok) {
@@ -570,11 +579,11 @@ async function fetchMorePosts() {
       }
     }
 
-    hideLoader();
+    loader.hide();
     loadingMorePosts = false;
   } catch (error) {
     console.error("Error fetching more posts:", error.message);
-    hideLoader();
+    loader.hide();
     loadingMorePosts = false;
   }
 }
@@ -592,11 +601,11 @@ function handleScroll() {
 
   if (distanceToBottom < threshold && !loadingMorePosts) {
     loadingMorePosts = true;
-    showLoader();
+    loader.show();
 
     setTimeout(() => {
       fetchMorePosts().then(() => {
-        hideLoader();
+        loader.hide();
         loadingMorePosts = false;
 
         scrollContainer.removeEventListener("scroll", handleScroll);

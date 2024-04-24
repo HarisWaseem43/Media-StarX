@@ -1,31 +1,48 @@
-// Function to fetch user data
-async function fetchAuthUserData(token) {
-  try {
-    const response = await fetch("https://dummyjson.com/auth/me", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+// AuthUserDataFetcher.js
+class AuthUserDataFetcher {
+  constructor(token) {
+    this.token = token;
+  }
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch user data");
+  // Function to fetch user data
+  async fetchUserData() {
+    try {
+      const response = await fetch("https://dummyjson.com/auth/me", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch user data");
+      }
+
+      const userData = await response.json();
+      console.log("Get User Data:", userData);
+      return userData;
+    } catch (error) {
+      console.error("Error fetching user data:", error.message);
+      throw error; // Propagate the error to handle it outside
     }
+  }
 
-    const userData = await response.json();
-    console.log("Get User Data:", userData);
-    return userData;
-  } catch (error) {
-    console.error("Error fetching user data:", error.message);
-    window.location.href = "../index.html";
+  // Function to start periodically checking token expiration
+  startCheckingTokenExpiration() {
+    this.intervalId = setInterval(async () => {
+      try {
+        await this.fetchUserData();
+      } catch (error) {
+        clearInterval(this.intervalId); // Stop checking on error
+        window.location.href = "../index.html";
+      }
+    }, 30000);
+  }
+
+  // Function to stop checking token expiration
+  stopCheckingTokenExpiration() {
+    clearInterval(this.intervalId);
   }
 }
 
-// Function to periodically check token expiration
-function checkTokenExpiration(token) {
-  setInterval(async function () {
-    await fetchAuthUserData(token);
-  }, 30000);
-}
-
-export { fetchAuthUserData, checkTokenExpiration };
+export default AuthUserDataFetcher;
