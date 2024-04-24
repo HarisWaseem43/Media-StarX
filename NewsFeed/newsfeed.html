@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./auth.js"></script>
+  </head>
+  <body>
+    <!-- Main Container -->
+    <main class="position-relative">
+      <div class="container d-grid w-100 column-gap-4">
+        <!----------------- LEFT -------------------->
+        <div class="left pt-4 px-lg-3">
+          <div class="profile py-2 px-2">
+            <div class="profile d-flex align-items-center column-gap-1 w-100">
+              <div>
+                <i class="instaIcon uil uil-instagram fs-1 text-white"></i>
+              </div>
+              <form class="d-flex w-100" role="search">
+                <input
+                  class="search-bar form-control me-1 p-1"
+                  id="search"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+              </form>
+            </div>
+            <hr class="my-2 text-white" />
+            <a
+              class="d-flex align-items-center column-gap-3 w-100 text-decoration-none"
+            >
+              <div class="profile-photo">
+                <img class="profile-img" id="profile-img" src="" alt="" />
+              </div>
+              <div class="handle">
+                <h4 class="fs-6 text-white mb-0" id="name"></h4>
+                <p class="text-white mb-0" id="username">@niaridania</p>
+              </div>
+            </a>
+          </div>
+
+          <!----------------- SIDEBAR -------------------->
+          <div class="sidebar mt-3">
+            <a
+              class="menu-item active d-flex align-items-center position-relative text-decoration-none"
+            >
+              <span
+                ><i class="uil uil-home fs-5 ms-4 position-relative"></i
+              ></span>
+              <h3 class="ms-4 fs-6 mb-0">Home</h3>
+            </a>
+            <a
+              class="menu-item d-flex align-items-center position-relative text-decoration-none"
+            >
+              <span
+                ><i class="uil uil-users-alt fs-5 ms-4 position-relative"></i
+              ></span>
+              <h3 class="ms-4 fs-6 mb-0 text-white">Friends</h3>
+            </a>
+            <a
+              class="menu-item d-flex align-items-center position-relative text-decoration-none"
+            >
+              <span
+                ><i class="uil uil-bell fs-5 ms-4 position-relative"
+                  ><small
+                    class="notification-count text-white rounded-4 position-absolute text-decoration-none"
+                    >9+</small
+                  ></i
+                ></span
+              >
+              <h3 class="ms-4 fs-6 mb-0 text-white">Feeds</h3>
+            </a>
+            <a
+              class="menu-item d-flex align-items-center position-relative text-decoration-none"
+            >
+              <span
+                ><i class="uil uil-envelope-alt fs-5 ms-4 position-relative"
+                  ><small
+                    class="notification-count text-white rounded-4 position-absolute"
+                    >6</small
+                  ></i
+                ></span
+              >
+              <h3 class="ms-4 fs-6 mb-0 text-white">Messenger</h3>
+            </a>
+            <a
+              class="menu-item d-flex align-items-center position-relative text-decoration-none"
+            >
+              <span
+                ><i class="uil uil-bookmark fs-5 ms-4 position-relative"></i
+              ></span>
+              <h3 class="ms-4 fs-6 mb-0 text-white">Saved</h3>
+            </a>
+            <a
+              class="menu-item d-flex align-items-center position-relative text-decoration-none"
+            >
+              <span
+                ><i class="uil uil-chart-line fs-5 ms-4 position-relative"></i
+              ></span>
+              <h3 class="ms-4 fs-6 mb-0 text-white">Adds Manager</h3>
+            </a>
+            <a
+              class="menu-item d-flex align-items-center position-relative text-decoration-none"
+            >
+              <span
+                ><i class="uil uil-setting fs-5 ms-4 position-relative"></i
+              ></span>
+              <h3 class="ms-4 fs-6 mb-0 text-white">Setting</h3>
+            </a>
+            <a
+              id="logout"
+              class="menu-item d-flex align-items-center position-relative text-decoration-none"
+            >
+              <span
+                ><i class="uil uil-sign-out-alt fs-5 ms-4 position-relative"></i
+              ></span>
+              <h3 class="ms-4 fs-6 mb-0 text-white">Logout</h3>
+            </a>
+          </div>
+          <!----------------- END OF SIDEBAR -------------------->
+          <label
+            class="btn text-white my-4 w-100 text-center py-2"
+            for="create-post"
+            >Create Post</label
+          >
+        </div>
+
+        <!----------------- MIDDLE -------------------->
+        <div class="middle" id="middle">
+          <!-- Navbar -->
+          <nav class="navbar w-100 my-4 rounded-4 py-1 px-4">
+            <div>
+              <a class="navbar-brand text-white fs-lg-2 fs-3 mr-lg-0 mr-0"
+                >Media StarX</a
+              >
+            </div>
+            <div class="nav-item position-relative">
+              <i
+                class="uil uil-video fs-lg-4 fs-6 ms-lg-4 ms-2 position-relative text-white"
+              >
+              </i>
+            </div>
+            <div class="nav-item position-relative">
+              <i
+                class="uil uil-shopping-cart-alt fs-lg-4 fs-6 ms-lg-4 ms-2 position-relative text-white"
+              >
+              </i>
+            </div>
+            <div class="nav-item position-relative">
+              <i
+                class="uil uil-search fs-lg-4 fs-6 ms-lg-4 ms-2 position-relative text-white"
+              >
+              </i>
+            </div>
+            <div class="nav-item position-relative">
+              <i
+                class="uil uil-film fs-lg-4 fs-6 ms-lg-4 ms-2 position-relative text-white"
+              >
+              </i>
+            </div>
+          </nav>
+          <!-- Stories -->
+          <div class="stories d-flex justify-content-between gap-2 h-25">
+            <div
+              class="story d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
+            >
+              <div
+                class="profile-photo rounded-circle ratio ratio-1x1 overflow-hidden"
+              >
+                <img src="../images/profile-8.jpg" />
+              </div>
+              <p class="name z-0 mb-0">Your Story</p>
+            </div>
+            <div
+              class="story d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
+            >
+              <div
+                class="profile-photo rounded-circle ratio ratio-1x1 overflow-hidden"
+              >
+                <img src="../images/profile-9.jpg" />
+              </div>
+              <p class="name z-0 mb-0">Lila James</p>
+            </div>
+            <div
+              class="story d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
+            >
+              <div
+                class="profile-photo rounded-circle ratio ratio-1x1 overflow-hidden"
+              >
+                <img src="../images/profile-10.jpg" />
+              </div>
+              <p class="name z-0 mb-0">Winnie Haley</p>
+            </div>
+            <div
+              class="story d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
+            >
+              <div
+                class="profile-photo rounded-circle ratio ratio-1x1 overflow-hidden"
+              >
+                <img src="../images/profile-11.jpg" />
+              </div>
+              <p class="name z-0 mb-0">Daniel Bale</p>
+            </div>
+            <div
+              class="story d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
+            >
+              <div
+                class="profile-photo rounded-circle ratio ratio-1x1 overflow-hidden"
+              >
+                <img src="../images/profile-12.jpg" />
+              </div>
+              <p class="name z-0 mb-0">Jane Doe</p>
+            </div>
+          </div>
+          <!-- Create Post -->
+          <div class="create-Post-Container mt-4 p-3 rounded-2">
+            <div class="d-flex column-gap-3">
+              <div class="profile-photo">
+                <img class="profile-img" id="userimg" src="" alt="" />
+              </div>
+              <form
+                action=""
+                class="create-post w-100 d-flex align-items-center justify-content-between"
+              >
+                <input
+                  type="text"
+                  placeholder="What's on your mind, Diana ?"
+                  id="create-post"
+                  class="w-100 justify-self-start ps-2 bg-transparent me-4"
+                />
+              </form>
+            </div>
+            <hr class="my-3 text-light" />
+            <div
+              class="Post-Features d-flex justify-content-between align-items-center px-lg-4"
+            >
+              <div class="liveVideo d-flex align-items-center pe-auto">
+                <a
+                  ><i
+                    class="uil uil-video fs-lg-4 fs-5 text-danger text-bold"
+                  ></i
+                ></a>
+                <h5 class="mb-0 text-white fs-lg-4 fs-6">Live</h5>
+              </div>
+              <div class="Photo-Video d-flex align-items-center pe-auto">
+                <a
+                  ><i
+                    class="uil uil-image-plus fs-lg-4 fs-5 text-success text-bold"
+                  ></i
+                ></a>
+                <h5 class="mb-0 text-white fs-lg-4 fs-6">Photo/Video</h5>
+              </div>
+              <div class="Feeling-Activity d-flex align-items-center pe-auto">
+                <a
+                  ><i
+                    class="uil uil-grin fs-lg-4 fs-5 text-warning text-bold"
+                  ></i
+                ></a>
+                <h5 class="mb-0 text-white fs-lg-4 fs-6">Feeling/Activity</h5>
+              </div>
+            </div>
+          </div>
+          <!-- Posts -->
+          <div id="loader" class="loader"></div>
+          <div class="" id="postCard">
+            <!-- <div class="d-flex justify-content-between align-items-center pe-4">
+              <div class="card-body d-flex align-items-center column-gap-2">
+                <div class="Post-Profile-Pic">
+                  <img
+                    src="../images/profile-13.jpg"
+                    class="card-img-top rounded-circle"
+                    alt="..."
+                    id="postImage"
+                  />
+                </div>
+                <div class="userPost-Info">
+                  <h5 class="card-title mb-0 text-white fs-6" id="postName">
+                    Username
+                  </h5>
+                  <p class="card-text text-white fs-6" id="postLocation">
+                    Location or Music
+                  </p>
+                </div>
+              </div>
+              <div><i class="uil uil-ellipsis-h fs-3"></i></div>
+            </div>
+            <img
+              src="../images/feed-3.jpg"
+              class="card-img-top px-3"
+              alt="..."
+            />
+            <div
+              class="main d-flex justify-content-between align-items-center px-3"
+            >
+              <div
+                class="threeAction d-flex justify-content-start align-items-center"
+              >
+                <div><i class="uil uil-heart fs-4 text-white"></i></div>
+                <div><i class="uil uil-comment-dots fs-4 text-white"></i></div>
+                <div><i class="uil uil-share fs-4 text-white"></i></div>
+              </div>
+              <div><i class="uil uil-bookmark-full fs-4 text-white"></i></div>
+            </div>
+            <div class="Reactions">
+              <div class="text-white ps-4 ms-1" id="Reactions">2</div>
+            </div>
+            <div class="card-body">
+              <div class="liked-by ps-3 d-flex">
+                <span class="likedImage"
+                  ><img
+                    class="d-block rounded-circle overflow-hidden"
+                    src="../images/profile-10.jpg"
+                /></span>
+                <span class="likedImage"
+                  ><img
+                    class="d-block rounded-circle overflow-hidden"
+                    src="../images/profile-4.jpg"
+                /></span>
+                <span class="likedImage"
+                  ><img
+                    class="d-block rounded-circle overflow-hidden"
+                    src="../images/profile-15.jpg"
+                /></span>
+                <p class="text-white">
+                  Liked by <b>Benjamin Dwayne</b> and <b>2, 323 others</b>
+                </p>
+              </div>
+              <p class="card-text text-white">
+                <b>Benjamin Dwayne</b> Supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+              <p class="card-text text-white">
+                <small class="text-white">Last updated 3 mins ago</small>
+              </p>
+            </div> -->
+          </div>
+        </div>
+        <!----------------- END OF MIDDLE -------------------->
+
+        <!----------------- RIGHT -------------------->
+        <div class="right"></div>
+        <!----------------- END OF RIGHT -------------------->
+      </div>
+    </main>
+
+    <!-- Bootstrap Script CDN -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./script.js"></script>
+    <!-- Script -->
+  </body>
+</html>
