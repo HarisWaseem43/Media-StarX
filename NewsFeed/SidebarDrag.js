@@ -35,33 +35,3 @@ class SidebarDrag {
 }
 
 export default SidebarDrag;
-
-// const sidebar = document.getElementById("sidebar");
-
-// // Variables to store initial touch position and sidebar position
-// let initialTouchX = 0;
-// let sidebarStartX = 0;
-
-// // Function to handle touch start event
-// function handleTouchStart(event) {
-//   initialTouchX = event.touches[0].clientX;
-//   sidebarStartX = sidebar.getBoundingClientRect().left;
-//   sidebar.classList.add("dragging");
-// }
-
-// // Function to handle touch move event
-// function handleTouchMove(event) {
-//   const touchX = event.touches[0].clientX;
-//   const offsetX = touchX - initialTouchX;
-//   sidebar.style.transform = `translateX(${sidebarStartX + offsetX}px)`;
-// }
-
-// // Function to handle touch end event
-// function handleTouchEnd() {
-//   sidebar.classList.remove("dragging");
-// }
-
-// // Add event listeners for touch events
-// sidebar.addEventListener("touchstart", handleTouchStart);
-// sidebar.addEventListener("touchmove", handleTouchMove);
-// sidebar.addEventListener("touchend", handleTouchEnd);

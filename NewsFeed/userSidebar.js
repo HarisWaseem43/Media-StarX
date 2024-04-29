@@ -18,20 +18,3 @@ export default class RightSidebar {
     this.rightSidebar.classList.remove("open");
   }
 }
-
-// rightsidebar
-// document.addEventListener("DOMContentLoaded", function () {
-//   var userIcon = document.getElementById("userIcon");
-//   var rightSidebar = document.getElementById("rightSidebar");
-//   var closeButton = document.getElementById("closeButton");
-
-//   // Toggle sidebar on userIcon click
-//   userIcon.addEventListener("click", function () {
-//     rightSidebar.classList.toggle("open");
-//   });
-
-//   // Close sidebar on closeButton click
-//   closeButton.addEventListener("click", function () {
-//     rightSidebar.classList.remove("open");
-//   });
-// });
