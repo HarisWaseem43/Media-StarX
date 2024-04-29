@@ -68,20 +68,6 @@ nav .search-bar input[type="search"]::placeholder {
   width: 2.5rem;
   margin-left: 0.5rem;
 }
-@media screen and (max-width: 425px) {
-  .create {
-    position: relative;
-    left: 11.2rem;
-    margin-top: 0.3rem;
-  }
-}
-@media screen and (max-width: 375px) {
-  .create {
-    position: relative;
-    left: 9.6rem;
-    margin-top: 0.3rem;
-  }
-}
 /* =============== Main ============== */
 main .container {
   grid-template-columns: 20vw auto 20vw;
@@ -91,20 +77,14 @@ main .container {
 
 /* =============== Left ============== */
 .left {
-  /* background-color: var(--color-hover); */
-  /* padding: var(--card-padding); */
-  /* border-radius: var(--border-radius); */
   overflow: auto !important;
   height: 100vh !important;
 }
 main .container .left {
   height: max-content;
   position: sticky;
-  /* top: var(--sticky-top-left); */
 }
 main .container .left .profile {
-  /* padding: var(--card-user-padding); */
-  /* background: var(--color-black); */
   background: var(--color-dark);
   border-radius: var(--card-border-radius);
 }
@@ -137,12 +117,10 @@ main .container .left .profile {
 .left .sidebar .active {
   background: var(--color-shady);
 }
-
 .left .sidebar .active i,
 .left .sidebar .active h3 {
   color: var(--color-primary);
 }
-
 .left .sidebar .active::before {
   content: "";
   display: block;
@@ -151,18 +129,15 @@ main .container .left .profile {
   position: absolute;
   background: var(--color-primary);
 }
-
 .left .sidebar .menu-item:first-child.active {
   border-top-left-radius: var(--card-border-radius);
   overflow: hidden;
 }
-
 .left .sidebar .menu-item:last-child.active {
   border-bottom-left-radius: var(--card-border-radius);
   overflow: hidden;
 }
 .left .btn {
-  /* background-color: var(--color-black); */
   background-color: var(--color-dark);
 }
 .left .btn:hover {
@@ -178,11 +153,7 @@ main .container .left .profile {
   overflow: auto;
   height: 100vh;
 }
-/* .middle .stories {
-  height: 14%;
-} */
 .middle .stories .story {
-  padding: var(--card-padding);
   border-radius: var(--card-border-radius);
 }
 
@@ -241,6 +212,15 @@ main .container .left .profile {
 .create-Post-Container {
   background: var(--color-dark) !important;
 }
+.create-Activity {
+  font-size: 1rem !important;
+}
+.create-ActivityIcon {
+  font-size: 1.3rem !important;
+}
+.Nav_Icon {
+  font-size: 1.5rem;
+}
 
 /* =============== Feeds ============== */
 
@@ -254,7 +234,8 @@ main .container .left .profile {
 .hidden {
   display: none;
 }
-.middle .liked-by span img {
+.middle .liked-by span img,
+.likeImg {
   width: 1.4rem;
   height: 1.4rem;
   border: 2px solid var(--color-white);
@@ -303,43 +284,25 @@ main .container .right {
   position: sticky;
   top: var(--sticky-top-right);
   bottom: 0;
+  overflow: auto;
+  height: 100vh;
 }
-
+/* ============== Users ============= */
+.UserImg {
+  width: 2rem !important;
+}
 /* =============== Messages ============== */
 .right .messages {
-  background: var(--color-white);
+  background: var(--color-dark);
   border-radius: var(--card-border-radius);
-  padding: var(--card-padding);
-}
-
-.right .messages .heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
 }
 
 .right .messages i {
   font-size: 1.4rem;
 }
 
-.right .messages .search-bar {
-  display: flex;
-  margin-bottom: 1rem;
-}
-
-.right .messages .category {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
 .right .messages .category h6 {
-  width: 100%;
-  text-align: center;
   border-bottom: 4px solid var(--color-light);
-  padding-bottom: 0.5rem;
-  font-size: 0.75rem;
 }
 
 .right .messages .category .active {
@@ -350,74 +313,65 @@ main .container .right {
   color: var(--color-primary);
 }
 
-.right .messages .message {
+.right .messages .message,
+.right .messages .users {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
   align-items: start;
 }
 
-.right .message .profile-photo {
-  position: relative;
-  overflow: visible;
-}
-
-.right .profile-photo img {
-  border-radius: 50%;
-}
-
 .right .messages .message:last-child {
   margin: 0;
-}
-
-.right .messages .message p {
-  font-size: 0.8rem;
 }
 
 .right .messages .message .profile-photo .active {
   width: 0.8rem;
   height: 0.8rem;
-  border-radius: 50%;
   border: 3px solid var(--color-white);
   background: var(--color-success);
-  position: absolute;
-  bottom: 0;
-  right: 0;
 }
 
 /* =============== Friend Requests ============== */
-.right .friend-requests {
-  margin-top: 1rem;
-}
-
 .right .friend-requests h4 {
   color: var(--color-grey);
-  margin: 1rem 0;
 }
 
 .right .request {
-  background: var(--color-white);
-  padding: var(--card-padding);
+  background: var(--color-dark);
   border-radius: var(--card-border-radius);
   margin-bottom: 0.7rem;
 }
 
-.right .request .info {
+/* =============== Users Post ================= */
+.userPost {
+  max-width: 100%;
+}
+.main_container {
+  max-width: 100%;
+}
+.user_ProfilePic {
+  width: 8rem;
+}
+.user-Data {
+  column-gap: 4rem;
+}
+.user-link {
+  text-decoration: none;
+  color: white;
+}
+.user-link {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  column-gap: 1rem;
+}
+.user_Story {
+  width: 5rem;
+}
+.container {
+  height: 100vh;
 }
 
-.right .request .action {
-  display: flex;
-  gap: 1rem;
-}
-/* .user-Details {
-  display: none !important;
-} */
-/* ================= 
-MEDIA QUERIES FOR SMALL LAPTOP AND BIG TABLETS 
-==================== */
+/* MEDIA QUERIES FOR SMALL LAPTOP AND BIG TABLETS  */
 
 @media screen and (max-width: 1200px) {
   .container {
@@ -449,9 +403,7 @@ MEDIA QUERIES FOR SMALL LAPTOP AND BIG TABLETS
   }
 }
 
-/* ================= 
-MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
-==================== */
+/* MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES */
 
 @media screen and (max-width: 992px) {
   main .container {
@@ -462,8 +414,23 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
     grid-column: 3/4;
     position: fixed;
     top: 0;
-    right: 0rem;
+    /* right: 0rem; */
     z-index: 99;
+  }
+  .sidebar {
+    position: fixed;
+    top: 1.5rem;
+    left: 0;
+    width: 4rem;
+    height: 100vh;
+    background-color: #333;
+    color: #fff;
+    z-index: 999;
+    transition: transform 0.3s ease-in-out;
+    touch-action: none;
+  }
+  .sidebar.dragging {
+    transition: none;
   }
   .left {
     width: 4rem;
@@ -473,22 +440,65 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
   main .container .middle {
     grid-column: 1/4;
   }
+  .left .sidebar .menu-item {
+    height: 3rem;
+    cursor: pointer;
+    transition: all 300ms ease;
+  }
+  .open {
+    position: fixed;
+    top: 0;
+    left: 0rem; /* Start with sidebar hidden */
+    width: 300px;
+    height: 100%;
+    transition: right 0.3s ease;
+  }
   main .container .right {
-    display: none;
+    left: 37rem; /* Show sidebar */
   }
 }
 @media screen and (max-width: 768px) {
-  /* .middle .stories {
-    height: 100% !important;
-  } */
+  .Profile_info {
+    width: 60%;
+  }
 }
 @media screen and (max-width: 425px) {
   .left .sidebar {
     margin-top: 2rem !important;
   }
+  .create {
+    position: relative;
+    left: 11.2rem;
+    margin-top: 0.3rem;
+  }
 }
 @media screen and (max-width: 375px) {
   .middle .navbar {
     padding: 0.5rem 1rem !important;
+  }
+  .create-Activity {
+    font-size: 1rem;
+  }
+  .create-ActivityIcon {
+    font-size: 1rem !important;
+  }
+  .Nav_Icon {
+    font-size: 1rem;
+  }
+  .create {
+    position: relative;
+    left: 9.6rem;
+    margin-top: 0.3rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .create-Activity {
+    font-size: 0.7rem !important;
+  }
+  .create-ActivityIcon {
+    font-size: 0.8rem !important;
+  }
+  .Nav_Icon {
+    font-size: 0.8rem;
   }
 }

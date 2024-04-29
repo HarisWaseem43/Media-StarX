@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Instagram</title>
+    <link rel="icon" href="../images/8379989-removebg-preview.png" />
+    <title>Media StarX34</title>
     <link rel="stylesheet" href="./style.css" />
     <link
       rel="stylesheet"
@@ -40,21 +41,26 @@
               </form>
             </div>
             <hr class="my-2 text-white" />
-            <a
-              class="d-flex align-items-center column-gap-3 w-100 text-decoration-none"
-            >
+            <div class="d-flex align-items-center column-gap-3 w-100">
               <div class="profile-photo">
                 <img class="profile-img" id="profile-img" src="" alt="" />
               </div>
               <div class="handle">
                 <h4 class="fs-6 text-white mb-0" id="name"></h4>
-                <p class="text-white mb-0" id="username">@niaridania</p>
+                <p class="text-white mb-0" id="username"></p>
               </div>
-            </a>
+            </div>
+            <div
+              class="Profile_Follows d-flex justify-content-between align-items-center mt-3 column-gap-2 text-center"
+            >
+              <h6 class="Posts text-white border-end">1.5k Likes</h6>
+              <h6 class="Followers text-white">102 Following</h6>
+              <h6 class="Following text-white border-start">9.3k Followers</h6>
+            </div>
           </div>
 
           <!----------------- SIDEBAR -------------------->
-          <div class="sidebar mt-3">
+          <div class="sidebar mt-3" id="sidebar">
             <a
               class="menu-item active d-flex align-items-center position-relative text-decoration-none"
             >
@@ -150,25 +156,25 @@
             </div>
             <div class="nav-item position-relative">
               <i
-                class="uil uil-video fs-lg-4 fs-6 ms-lg-4 ms-2 position-relative text-white"
+                class="Nav_Icon uil uil-video fs-lg-4 ms-2 position-relative text-white"
               >
               </i>
             </div>
             <div class="nav-item position-relative">
               <i
-                class="uil uil-shopping-cart-alt fs-lg-4 fs-6 ms-lg-4 ms-2 position-relative text-white"
+                class="Nav_Icon uil uil-shopping-cart-alt ms-lg-4 ms-2 position-relative text-white"
               >
               </i>
             </div>
             <div class="nav-item position-relative">
               <i
-                class="uil uil-search fs-lg-4 fs-6 ms-lg-4 ms-2 position-relative text-white"
+                class="Nav_Icon uil uil-search ms-lg-4 ms-2 position-relative text-white"
               >
               </i>
             </div>
-            <div class="nav-item position-relative">
+            <div class="nav-item position-relative" id="userIcon">
               <i
-                class="uil uil-film fs-lg-4 fs-6 ms-lg-4 ms-2 position-relative text-white"
+                class="Nav_Icon uil uil-bars ms-lg-4 ms-2 position-relative text-white"
               >
               </i>
             </div>
@@ -176,7 +182,7 @@
           <!-- Stories -->
           <div class="stories d-flex justify-content-between gap-2 h-25">
             <div
-              class="story d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
+              class="story p-2 d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
             >
               <div
                 class="profile-photo rounded-circle ratio ratio-1x1 overflow-hidden"
@@ -186,7 +192,7 @@
               <p class="name z-0 mb-0">Your Story</p>
             </div>
             <div
-              class="story d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
+              class="story p-2 d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
             >
               <div
                 class="profile-photo rounded-circle ratio ratio-1x1 overflow-hidden"
@@ -196,7 +202,7 @@
               <p class="name z-0 mb-0">Lila James</p>
             </div>
             <div
-              class="story d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
+              class="story p-2 d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
             >
               <div
                 class="profile-photo rounded-circle ratio ratio-1x1 overflow-hidden"
@@ -206,7 +212,7 @@
               <p class="name z-0 mb-0">Winnie Haley</p>
             </div>
             <div
-              class="story d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
+              class="story p-2 d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
             >
               <div
                 class="profile-photo rounded-circle ratio ratio-1x1 overflow-hidden"
@@ -216,7 +222,7 @@
               <p class="name z-0 mb-0">Daniel Bale</p>
             </div>
             <div
-              class="story d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
+              class="story p-2 d-flex flex-column justify-content-between align-items-center text-white w-100 position-relative overflow-hidden fs-6"
             >
               <div
                 class="profile-photo rounded-circle ratio ratio-1x1 overflow-hidden"
@@ -251,31 +257,33 @@
               <div class="liveVideo d-flex align-items-center pe-auto">
                 <a
                   ><i
-                    class="uil uil-video fs-lg-4 fs-5 text-danger text-bold"
+                    class="create-ActivityIcon uil uil-video text-danger text-bold"
                   ></i
                 ></a>
-                <h5 class="mb-0 text-white fs-lg-4 fs-6">Live</h5>
+                <h5 class="create-Activity mb-0 text-white">Live</h5>
               </div>
               <div class="Photo-Video d-flex align-items-center pe-auto">
                 <a
                   ><i
-                    class="uil uil-image-plus fs-lg-4 fs-5 text-success text-bold"
+                    class="create-ActivityIcon uil uil-image-plus text-success text-bold"
                   ></i
                 ></a>
-                <h5 class="mb-0 text-white fs-lg-4 fs-6">Photo/Video</h5>
+                <h5 class="create-Activity mb-0 text-white">Photo/Video</h5>
               </div>
               <div class="Feeling-Activity d-flex align-items-center pe-auto">
                 <a
                   ><i
-                    class="uil uil-grin fs-lg-4 fs-5 text-warning text-bold"
+                    class="create-ActivityIcon uil uil-grin text-warning text-bold"
                   ></i
                 ></a>
-                <h5 class="mb-0 text-white fs-lg-4 fs-6">Feeling/Activity</h5>
+                <h5 class="create-Activity mb-0 text-white">
+                  Feeling/Activity
+                </h5>
               </div>
             </div>
           </div>
           <!-- Posts -->
-          <div id="loader" class="loader"></div>
+
           <div class="" id="postCard">
             <!-- <div class="d-flex justify-content-between align-items-center pe-4">
               <div class="card-body d-flex align-items-center column-gap-2">
@@ -349,11 +357,150 @@
               </p>
             </div> -->
           </div>
+          <div id="loader" class="loader"></div>
         </div>
         <!----------------- END OF MIDDLE -------------------->
 
         <!----------------- RIGHT -------------------->
-        <div class="right"></div>
+        <div class="right pt-4 px-lg-3" id="rightSidebar">
+          <!------- All Users ------->
+
+          <div
+            class="messages mb-4 text-white p-3 h-100 overflow-auto"
+            id="users"
+          >
+            <div id="closeButton" class="closeButton d-lg-none text-end">
+              <i class="uil uil-times"></i>
+            </div>
+            <div
+              class="heading d-flex align-items-center justify-content-between mb-2"
+            >
+              <h4>Friends</h4>
+              <i class="uil uil-user"></i>
+            </div>
+            <!------- SEARCH BAR ------->
+            <div class="search-bar d-flex rounded-2 mb-3 searchUser">
+              <i class="text-dark uil uil-search"></i>
+              <input
+                class="search-bar w-75 searchUserBar"
+                type="search"
+                placeholder="Search messages"
+                id="message-search"
+              />
+            </div>
+            <!------- User-1 ------->
+            <div class="users"></div>
+          </div>
+          <!------- MESSAGES ------->
+          <div class="messages mb-2 text-white p-3">
+            <div
+              class="heading d-flex align-items-center justify-content-between mb-2"
+            >
+              <h4>Messages</h4>
+              <i class="uil uil-edit"></i>
+            </div>
+            <!------- SEARCH BAR ------->
+            <div class="search-bar d-flex rounded-2 mb-3">
+              <i class="uil uil-search"></i>
+              <input
+                class="search-bar w-full"
+                type="search"
+                placeholder="Search messages"
+                id="message-search"
+              />
+            </div>
+            <!------- MESSAGES CATEGORY ------->
+            <div class="category d-flex justify-content-between mb-2">
+              <h6 class="active">Primary</h6>
+              <h6 class="text-center pb-1 fs-6">General</h6>
+              <h6 class="message-requests">Requests (7)</h6>
+            </div>
+            <!------- MESSAGES ------->
+            <div class="message">
+              <div class="profile-photo position-relative overflow-visible">
+                <img
+                  class="UserImg rounded-circle"
+                  src="../images/profile-17.jpg"
+                />
+              </div>
+              <div class="message-body">
+                <h5 class="mb-0">Edem Quist</h5>
+                <p class="fs-6 text-white">Just woke up bruh</p>
+              </div>
+            </div>
+            <!------- MESSAGES ------->
+            <div class="message">
+              <div class="profile-photo position-relative overflow-visible">
+                <img
+                  class="UserImg rounded-circle"
+                  src="../images/profile-6.jpg"
+                />
+              </div>
+              <div class="message-body">
+                <h5 class="mb-0">Daniella Jackson</h5>
+                <p class="fs-6 text-white text-bold">2 new messages</p>
+              </div>
+            </div>
+            <!------- MESSAGES ------->
+            <div class="message">
+              <div class="profile-photo position-relative overflow-visible">
+                <img
+                  class="UserImg rounded-circle"
+                  src="../images/profile-8.jpg"
+                />
+                <div
+                  class="active rounded-circle position-absolute satrt-0 bottom-0"
+                ></div>
+              </div>
+              <div class="message-body">
+                <h5 class="mb-0">Chantel Msiza</h5>
+                <p class="fs-6 text-white">lol u right</p>
+              </div>
+            </div>
+          </div>
+          <!------- END OF MESSAGES ------->
+
+          <!------- FRIEND REQUEST ------->
+          <div class="friend-requests mt-1">
+            <h4 class="my-2">Requests</h4>
+            <div class="request p-3 text-white">
+              <div class="info d-flex mb-2 gap-2">
+                <div class="profile-photo position-relative overflow-visible">
+                  <img
+                    class="UserImg rounded-circle"
+                    src="../images/profile-20.jpg"
+                  />
+                </div>
+                <div>
+                  <h5 class="mb-0">Hajia Bintu</h5>
+                  <p class="fs-6 text-white">8 mutual friends</p>
+                </div>
+              </div>
+              <div class="action d-flex gap-3">
+                <button class="btn btn-primary">Accept</button>
+                <button class="text-white btn btn-danger">Decline</button>
+              </div>
+            </div>
+            <div class="request p-3 text-white">
+              <div class="info d-flex mb-2 gap-2">
+                <div class="profile-photo position-relative overflow-visible">
+                  <img
+                    class="UserImg rounded-circle"
+                    src="../images/profile-18.jpg"
+                  />
+                </div>
+                <div>
+                  <h5 class="mb-0">Edelson Mandela</h5>
+                  <p class="fs-6 text-white">2 mutual friends</p>
+                </div>
+              </div>
+              <div class="action action d-flex gap-3">
+                <button class="btn btn-primary">Accept</button>
+                <button class="text-white btn btn-danger">Decline</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <!----------------- END OF RIGHT -------------------->
       </div>
     </main>
@@ -364,7 +511,8 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="./script.js"></script>
+    <!-- <script type="module" src="./script.js"></script> -->
+    <script type="module" src="./Main.js"></script>
     <!-- Script -->
   </body>
 </html>

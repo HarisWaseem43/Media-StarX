@@ -2,6 +2,9 @@
 import Search from "./SearchPost.js";
 import AuthUserDataFetcher from "./FetchAuthUser.js";
 import Loader from "./Loader.js";
+import SidebarDrag from "./SidebarDrag.js";
+import UserDisplay from "./FetchAllUsers.js";
+import RightSidebar from "./userSidebar.js";
 
 // Console All LocalStorage Data
 const token = localStorage.getItem("token");
@@ -31,18 +34,6 @@ const profileImg = document.getElementById("profile-img");
 profileImg.src = image;
 const userImage = document.getElementById("userimg");
 userImage.src = image;
-
-// Instantiate the Search class
-const search = new Search();
-
-// Create an instance of AuthUserDataFetcher
-const userDataFetcher = new AuthUserDataFetcher(token);
-
-// Fetch user data
-userDataFetcher.fetchUserData();
-
-// Start checking token expiration periodically
-userDataFetcher.startCheckingTokenExpiration();
 
 //---------------- For Comment Button ----------------
 // Function to toggle visibility of Comment input field
@@ -259,8 +250,6 @@ document.addEventListener("click", (event) => {
 // --------- Delete Comment ----------
 
 // ------ For Loader ------
-// Create an instance of Loader
-const loader = new Loader();
 
 // ------ For Loader ------
 
@@ -318,15 +307,6 @@ async function fetchPosts() {
           postCardContainer.appendChild(postCard);
           attachEventListeners(postCard);
         }
-
-        // if (userData) {
-        //   console.log(`User data for post ${post.id}:`, userData);
-        //   console.log(`Username for post ${post.id}:`, userData.username);
-        //   console.log(
-        //     `User address for post ${post.id}:`,
-        //     userData.address.address
-        //   );
-        // }
       } catch (error) {
         console.error(error.message);
       }
@@ -547,7 +527,7 @@ async function fetchMorePosts() {
     }
 
     const postsData = await response.json();
-    console.log("Get More Posts :", postsData.posts);
+    // console.log("Get More Posts :", postsData.posts);
 
     // Get the next 10 posts
     const nextTenPosts = postsData.posts.slice(10, 20);
@@ -641,21 +621,52 @@ function attachEventListeners(postCard) {
             [index].querySelector(".test")
             .textContent.trim();
           toggleEditCommentInputField(postCard, commentText);
-          // console.log(
-          //   postCard
-          //     .querySelectorAll(".comment-item")
-          //     [index].querySelector(".test")
-          // );
         });
       });
     });
   }
 }
 
-// Function to logout
-function logout() {
-  localStorage.clear();
-  window.location.href = "../index.html";
+// Create an instance of Loader
+const loader = new Loader();
+
+// Instantiate the Search class
+const search = new Search();
+
+// Create an instance of AuthUserDataFetcher
+const userDataFetcher = new AuthUserDataFetcher(token);
+
+// Fetch user data
+userDataFetcher.fetchUserData();
+
+// Start checking token expiration periodically
+userDataFetcher.startCheckingTokenExpiration();
+
+// Create an instance of UserDisplay
+const userDisplay = new UserDisplay();
+
+// Fetch and display users
+userDisplay.fetchAndDisplayUsers();
+
+// Logout Functionality
+class LogoutManager {
+  constructor() {
+    this.logoutLink = document.getElementById("logout");
+    this.logoutLink.addEventListener("click", this.logout.bind(this));
+  }
+
+  logout() {
+    localStorage.clear();
+    window.location.href = "../index.html";
+  }
 }
-const logoutLink = document.getElementById("logout");
-logoutLink.addEventListener("click", logout);
+const logoutManager = new LogoutManager();
+
+// Assuming sidebarElement is the reference to your sidebar DOM element
+const sidebarElement = document.getElementById("sidebar");
+const sidebar = new SidebarDrag(sidebarElement);
+
+// Right Sidebar Toggle
+document.addEventListener("DOMContentLoaded", function () {
+  new RightSidebar("userIcon", "rightSidebar", "closeButton");
+});
