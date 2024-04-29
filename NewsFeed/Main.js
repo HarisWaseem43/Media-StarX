@@ -181,7 +181,7 @@ class PostManager {
 
           scrollContainer.removeEventListener("scroll", this.handleScroll);
         });
-      }, 10000);
+      }, 5000);
     }
   }
 
