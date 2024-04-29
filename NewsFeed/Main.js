@@ -217,6 +217,11 @@ class PostManager {
               icon: "success",
               title: "Comment Added",
               text: "Your comment has been added successfully!",
+              customClass: {
+                container: "custom-swal-container",
+                popup: "custom-swal-popup",
+                backdrop: "custom-swal-backdrop",
+              },
             });
             return response.json();
           } else {
@@ -294,6 +299,11 @@ class PostManager {
               icon: "success",
               title: "Comment Updated",
               text: `Comment has been updated successfully!`,
+              customClass: {
+                container: "custom-swal-container",
+                popup: "custom-swal-popup",
+                backdrop: "custom-swal-backdrop",
+              },
             });
             return res.json();
           }
@@ -333,6 +343,11 @@ class PostManager {
             icon: "success",
             title: "Comment Deleted",
             text: `Comment has been deleted successfully!`,
+            customClass: {
+              container: "custom-swal-container",
+              popup: "custom-swal-popup",
+              backdrop: "custom-swal-backdrop",
+            },
           });
         } else {
           throw new Error("Failed to delete comment");

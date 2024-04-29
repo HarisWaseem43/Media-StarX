@@ -370,6 +370,10 @@ main .container .right {
 .container {
   height: 100vh;
 }
+.custom-swal-popup {
+  background: var(--color-dark);
+  color: white;
+}
 
 /* MEDIA QUERIES FOR SMALL LAPTOP AND BIG TABLETS  */
 
